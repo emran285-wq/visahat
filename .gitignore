@@ -1,0 +1,38 @@
+# Environment and credentials
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.crt
+
+# Runtime data, uploads, logs, and caches
+storage/*
+!storage/.gitkeep
+uploads/*
+!uploads/.gitkeep
+logs/*
+!logs/.gitkeep
+cache/*
+!cache/.gitkeep
+*.log
+
+# Database exports and backups
+*.sql
+*.sqlite
+*.sqlite3
+*.dump
+*.bak
+*.backup
+
+# Local tooling and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# PHP and Composer local artifacts
+vendor/
+.phpunit.result.cache

@@ -1,0 +1,17 @@
+<?php
+declare(strict_types=1); require __DIR__ . '/config.php';
+$destinationsData = require __DIR__ . '/data/destinations.php';
+$servicesData = require __DIR__ . '/data/services.php';
+uasort($destinationsData, fn($a, $b) => strcasecmp($a['displayName'], $b['displayName']));
+
+// Validate both preselect values server-side; invalid or missing values are ignored safely.
+$selectedDestinationSlug = (string) ($_GET['destination'] ?? '');
+if (!isset($destinationsData[$selectedDestinationSlug])) $selectedDestinationSlug = '';
+$selectedServiceSlug = (string) ($_GET['service'] ?? '');
+$selectedServiceTitle = isset($servicesData[$selectedServiceSlug]) ? $servicesData[$selectedServiceSlug]['title'] : '';
+
+$pageTitle = 'Request a Consultation | Visa Hat';
+$metaDescription = 'Prepare a Visa Hat consultation request for your visa or immigration plans.';
+require __DIR__ . '/includes/header.php';
+?>
+<main id="main-content"><section class="page-hero"><div class="container"><p class="eyebrow">Consultation request</p><h1>Put your next <strong>questions in order.</strong></h1><p>This short demo form helps you prepare a consultation request. It does not transmit or store your information.</p></div></section><section class="section consultation standalone-consultation"><div class="container consultation-grid"><div class="consultation-copy"><p class="eyebrow">What to include</p><h2>A little context makes the conversation more useful.</h2><ul class="capability-list"><li>Your intended destination</li><li>The visa topic you are exploring</li><li>Your current timeline or intake</li><li>The questions you want clarified</li></ul><p class="availability-note"><b>Demo form</b><span>Requests are not sent.</span></p></div><div class="form-panel"><form id="consultation-form" novalidate><div class="form-row"><label>Full name<input name="name" autocomplete="name" minlength="2" maxlength="100" required></label><label>Email<input name="email" type="email" autocomplete="email" maxlength="254" required></label></div><div class="form-row"><label>Phone <small>Optional</small><input name="phone" autocomplete="tel" maxlength="32"></label><label>Service interest<select name="service" required><option value="">Select a service</option><option<?= $selectedServiceTitle === 'Skilled Worker Visa' ? ' selected' : '' ?>>Skilled Worker Visa</option><option<?= $selectedServiceTitle === 'Visitor Visa' ? ' selected' : '' ?>>Visitor Visa</option><option<?= $selectedServiceTitle === 'Temporary Work Visa' ? ' selected' : '' ?>>Temporary Work Visa</option><option<?= $selectedServiceTitle === 'Student Visa' ? ' selected' : '' ?>>Student Visa</option><option>Not sure yet</option></select></label></div><label>Destination <small>Optional</small><select name="destination"><option value="">Not sure yet</option><?php foreach ($destinationsData as $dSlug => $dItem): ?><option value="<?= e($dSlug) ?>"<?= $dSlug === $selectedDestinationSlug ? ' selected' : '' ?>><?= e($dItem['displayName']) ?></option><?php endforeach; ?></select></label><label>Message <small>Optional</small><textarea name="message" maxlength="2000" rows="4"></textarea></label><label class="checkbox-row"><input name="privacy" type="checkbox" required><span>I agree to the <a href="/privacy">privacy notice</a>.</span></label><p class="form-status" role="status" aria-live="polite"></p><button class="btn btn-primary" type="submit">Preview request</button></form></div></div></section></main><?php require __DIR__ . '/includes/footer.php'; ?>

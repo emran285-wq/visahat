@@ -1,0 +1,10 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/CHANGE_ME/public_html
+    - if [ "$DEPLOYPATH" = "/home/CHANGE_ME/public_html" ]; then echo "Set the account-specific DEPLOYPATH in .cpanel.yml before deployment."; exit 1; fi
+    - /bin/mkdir -p "$DEPLOYPATH/assets" "$DEPLOYPATH/data" "$DEPLOYPATH/includes"
+    - /bin/cp index.php 404.php config.php router.php visa.php service.php destinations.php destination.php search.php privacy.php sitemap.php robots.txt .htaccess "$DEPLOYPATH/"
+    - /bin/cp -R assets/. "$DEPLOYPATH/assets/"
+    - /bin/cp -R data/. "$DEPLOYPATH/data/"
+    - /bin/cp -R includes/. "$DEPLOYPATH/includes/"

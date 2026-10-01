@@ -1,0 +1,48 @@
+<?php
+// Consultancy assistance types (what Visa Hat does), distinct from visa categories in data/services.php.
+return [
+    'personal-consultation' => [
+        'title' => 'Personal Consultation',
+        'icon' => 'consult',
+        'summary' => 'A focused, one-to-one conversation about your circumstances and options.',
+        'who' => 'Anyone exploring a work, study, visit, or temporary-work move who wants to talk it through with a consultant.',
+        'included' => ['A discussion of your destination, purpose, and timeline', 'Orientation to the preparation steps relevant to your situation', 'Space to ask the questions that matter most to you'],
+        'excluded' => ['Legal representation', 'Submitting an application on your behalf', 'Any guarantee of a visa outcome'],
+        'info_needed' => ['Your intended destination', 'The purpose of your move (work, study, visit, temporary work)', 'Your general timeline'],
+        'process' => ['Request a consultation and share a little context', 'Have a focused conversation about your plan', 'Leave with a clearer view of relevant next steps'],
+        'receive' => 'A practical, personalised view of what to consider next.',
+    ],
+    'document-guidance' => [
+        'title' => 'Document Preparation Guidance',
+        'icon' => 'checklist',
+        'summary' => 'Help understanding and organising the documents your plan may need.',
+        'who' => 'People who are ready to start gathering paperwork but are unsure what to prioritise.',
+        'included' => ['An explanation of common document categories for your visa type', 'Guidance on organising what you already have'],
+        'excluded' => ['Drafting, certifying, or translating documents', 'Submitting documents to an immigration authority'],
+        'info_needed' => ['Your visa category', 'The documents you currently hold'],
+        'process' => ['Bring your current documents to a consultation', 'Review what applies to your situation', 'Note what to gather next'],
+        'receive' => 'A clearer sense of the documentation relevant to your case.',
+    ],
+    'process-explanation' => [
+        'title' => 'Application-Process Explanation',
+        'icon' => 'route',
+        'summary' => 'A walkthrough of the general stages involved in a visa process.',
+        'who' => 'People who want to understand a process before committing time or money to it.',
+        'included' => ['An explanation of typical stages for your visa category', 'A realistic view of what each stage usually involves'],
+        'excluded' => ['Submitting or tracking an application for you', 'Liaising with immigration authorities on your behalf'],
+        'info_needed' => ['Your target visa category and destination country'],
+        'process' => ['Discuss your target pathway in a consultation', 'Walk through the general stages together', 'Clarify what depends on your personal circumstances'],
+        'receive' => 'A practical understanding of the pathway ahead.',
+    ],
+    'follow-up-support' => [
+        'title' => 'Follow-Up Support',
+        'icon' => 'refresh',
+        'summary' => 'A further conversation once your plan has moved on.',
+        'who' => 'Clients who have already had an initial consultation and want to revisit their questions.',
+        'included' => ['A follow-up conversation to reassess your situation', 'Clarification as your plan develops'],
+        'excluded' => ['Ongoing case management', 'Representation in an active application'],
+        'info_needed' => ['A reference to your earlier consultation', 'What has changed since then'],
+        'process' => ['Request a follow-up when your situation changes', 'Revisit your original questions together', 'Update your view of the next step'],
+        'receive' => 'Guidance that reflects your current progress, not just your starting point.',
+    ],
+];

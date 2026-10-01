@@ -1,0 +1,29 @@
+Options -Indexes
+DirectoryIndex index.php
+
+RewriteEngine On
+
+# Redirect only browser requests for old public PHP URLs before serving files.
+RewriteCond %{THE_REQUEST} \s/+index\.php[\s?] [NC]
+RewriteRule ^index\.php$ / [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+visa\.php[\s?] [NC]
+RewriteRule ^visa\.php$ /visa [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+search\.php[\s?] [NC]
+RewriteRule ^search\.php$ /search [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+privacy\.php[\s?] [NC]
+RewriteRule ^privacy\.php$ /privacy [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+sitemap\.php[\s?] [NC]
+RewriteRule ^sitemap\.php$ /sitemap.xml [R=301,L]
+
+# Keep implementation and data files out of the public surface.
+RewriteRule ^(?:config|router)\.php$ - [F,L,NC]
+RewriteRule ^(?:data|includes)/ - [F,L,NC]
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+RewriteRule ^ router.php [L,QSA]
+
+<FilesMatch "\.(?:env|ini|log|sql|bak|dist|yml|yaml)$">
+	Require all denied
+</FilesMatch>
