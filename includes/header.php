@@ -13,6 +13,7 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
     <meta name="description" content="<?= e($metaDescription) ?>">
     <link rel="canonical" href="<?= e($canonical) ?>">
     <meta name="robots" content="<?= !empty($noindex) ? 'noindex,nofollow' : 'index,follow' ?>">
+    <meta name="google-site-verification" content="S3v5FlW7p0bYssUpr7AsXnquavsQ76d-07aK3GYvSxc" />
     <meta property="og:type" content="website"><meta property="og:site_name" content="Visa Hat">
     <meta property="og:title" content="<?= e($pageTitle) ?>"><meta property="og:description" content="<?= e($metaDescription) ?>"><meta property="og:url" content="<?= e($canonical) ?>">
     <meta name="theme-color" content="#f4f9fd">
